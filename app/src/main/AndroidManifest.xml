@@ -28,6 +28,14 @@
             android:name=".DetailActivity"
             android:label="@string/title_activity_detail" >
         </activity>
+        <activity
+            android:name=".DummyResultActivity"
+            android:label="@string/title_activity_dummy_result" >
+        </activity>
+        <activity
+            android:name=".RecycleActivity"
+            android:label="@string/title_activity_recycle" >
+        </activity>
     </application>
 
 </manifest>

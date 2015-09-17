@@ -66,6 +66,8 @@ public class ThirdActivity extends Activity {
                     tagHolder = (TagHolder) v.getTag();
                 } try {
                     Person p = getItem(position);
+                } catch (Exception e){
+                    Log.v("TAG", "Oops");
                 }
                 return v;
             }

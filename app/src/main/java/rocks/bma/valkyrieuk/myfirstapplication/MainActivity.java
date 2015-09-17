@@ -17,6 +17,7 @@ public class MainActivity extends Activity {
 
     private EditText myET;
     private Switch mySwitch;
+    final int CODE = 1234;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,7 @@ public class MainActivity extends Activity {
 
         b.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public boolean onLongClick(View v){
+            public boolean onLongClick(View v) {
                 Intent i = new Intent(MainActivity.this, ThirdActivity.class);
                 i.putExtra("name", "Bradley");
                 startActivity(i);
@@ -56,6 +57,23 @@ public class MainActivity extends Activity {
                 startActivity(i);
             }
 
+        });
+
+        findViewById(R.id.startActivityButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, DummyResultActivity.class);
+                startActivityForResult(i, CODE);
+
+            }
+        });
+
+        findViewById(R.id.recycle).setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent i = new Intent(MainActivity.this, RecycleActivity.class);
+                startActivity(i);
+            }
         });
     }
 
@@ -97,5 +115,12 @@ public class MainActivity extends Activity {
     protected void onResume() {
         super.onResume();
         Log.v("TAG", "onResume");
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        if (requestCode == CODE && resultCode == RESULT_OK){
+            Log.v("TAG", data.getStringExtra("DummyData"));
+        }
     }
 }
